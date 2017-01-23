@@ -1,10 +1,9 @@
 /* This C program demonstrates the switch statement without using breaks. */ /* The program is tested on MS Visual C++ platform */
 
 #include <stdio.h>
-#include <stdlib.h>
 #pragma warning(disable : 4996) // Remove this line in Unix GCC environment
 
-int main(void) {
+void main() {
     char ch;
     int f, a = 10, b = 20, c = 0;
     
@@ -23,5 +22,6 @@ int main(void) {
         }
         
         c++;
+        printf("\n");
     }
 }
