@@ -6,10 +6,11 @@
 void main() {
     char ch;
     int f, a = 10, b = 20, c = 0;
+    double f2;
     
     while(c < 5) {
         printf("Please enter desired arithmetic opperation (+, -, *, /): ");
-        scanf("\n%c", &ch);
+        ch = getchar();
         
         printf("ch = %c\n", ch);
         
@@ -17,10 +18,10 @@ void main() {
             case '+': f = a + b; printf("f = %d\n", f); break;
             case '-': f = a - b; printf("f = %d\n", f); break;
             case '*': f = a * b; printf("f = %d\n", f); break;
-            case '/': f = a / b; printf("f = %d\n", f); break;
+            case '/': f2 = (double)(a) / b; printf("f = %.2f\n", f2); break;
             default: printf("invalid operator\n");
         }
-        
+        while ((ch = getchar()) != '\n' && ch != EOF) { }
         c++;
         printf("\n");
     }

@@ -1,0 +1,10 @@
+1. CSE240 = Invalid because <LETTERS><numbers> is not a correct sequence.
+2. aZ1 = Invalid because <letters><numbers> is not a correct sequence.
+3. VWX97 = Invalid because <LETTERS><numbers> is not a correct sequence.
+4. Zbad99 = Valid because <LETTERS><letters><number> is valid.
+5. Ey55 = Valid because <LETTERS><letter><number>
+6. dYaZeWkZ = Invalid because <letter><LETTER><letter><LETTER><letter><LETTER><letter><letter> is not a correct sequence.
+7. XYZcde579 = Valid because <LETTERS><letters><number> is a correct sequence.
+8. XYZabc3 = Valid because <LETTERS><letters><number> is a correct sequence.
+9. abcXYZ123 = Valid because <letters><LETTERS><numbers> is a correct sequence.
+10. edc135790V = Invalid because <letters><numbers><LETTERS> is not a correct sequence.

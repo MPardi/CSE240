@@ -7,6 +7,7 @@
 void main() {
     char ch;
     int f, a = 10, b = 20, c;
+    double f2;
     
     //Had problems with scanf originally because it kept adding the returned blank line to stdin, causing the loop
     //to execute a second time with no input before allowing me to enter new user input.
@@ -21,7 +22,7 @@ void main() {
             case '+': f = a + b; printf("f = %d\n", f); break;
             case '-': f = a - b; printf("f = %d\n", f); break;
             case '*': f = a * b; printf("f = %d\n", f); break;
-            case '/': f = a / b; printf("f = %d\n", f); break;
+            case '/': f2 = (double)(a) / b; printf("f = %.1f\n", f2); break;
             default: printf("invalid operator\n");
         }
         
