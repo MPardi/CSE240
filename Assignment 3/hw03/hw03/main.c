@@ -37,11 +37,15 @@ void printStrings(char[NUM_STRINGS][STRING_LENGTH]);
 
 void initializeStrings(char strings[NUM_STRINGS][STRING_LENGTH])
 {
-    for(int y = 0; y < STRING_LENGTH; y++) {
-        for(int x = 0; x < NUM_STRINGS; x++) {
-            strings[x][y] = 'c';
+    int i;
+    int j;
+    for(i = 0; i < NUM_STRINGS; i++) {
+        for(j = 0; j < STRING_LENGTH; j++) {
+            strings[i][j] = '\0';
         }
     }
+    
+    //memset(strings, '\0', sizeof(strings[0][0]) * STRING_LENGTH * NUM_STRINGS);
 }
 
 
@@ -55,10 +59,20 @@ void initializeStrings(char strings[NUM_STRINGS][STRING_LENGTH])
 //for hello the new string will be hello2
 
 void frequency(char strings[NUM_STRINGS][STRING_LENGTH], char search_alphabet)
-
 {
-    int freq, 
-    
+    int count, i, j;
+    char countChar;
+    for(i = 0; i < NUM_STRINGS; i++) {
+        count = 0;
+        for(j = 0; j <= strlen(strings[i]); j++) {
+            if(strings[i][j] == search_alphabet) {
+                count++;
+            }
+        }
+        countChar = (char) count;
+        sprintf(strings[i], "%s%d", strings[i], count);
+        printf("%s\n", strings[i]);
+    }
     
     
     
@@ -73,11 +87,31 @@ void frequency(char strings[NUM_STRINGS][STRING_LENGTH], char search_alphabet)
 //print the new string without vowel using problem 6.
 
 void remove_vowel(char strings[NUM_STRINGS][STRING_LENGTH])
-
 {
+    char vowels[] = "AEIOUaeiou";
+    char strings2[STRING_LENGTH];
+    char replace;
+    //char vowels[] = {'a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U'};
     
+    int i, j, k, l;
+    for(i = 0; i < NUM_STRINGS; i++) {;
+        k = 0;
+        for(l = 0; l <= strlen(strings2); l++) {
+            strings2[l] = '\0';
+        }
+//        for(j = 0; j <= strlen(strings[j]); j++) {
+        for(j = 0; strings[i][j] != '\0'; j++) {
+            if(!(strchr(vowels, strings[i][j])) && strings[i][j] != '\0') {
+                replace = strings[i][j];
+                strings2[k] = replace;
+                k++;
+            }
+        }
+        strings2[k] = '\0';
+        strcpy(strings[i], strings2);
+    }
     
-    
+
 }
 
 
@@ -89,11 +123,12 @@ void remove_vowel(char strings[NUM_STRINGS][STRING_LENGTH])
 // If string1 is "hello" and string2 is "goodbye", after calling this function, string1 will be "goodbye" and string2 will be "hello".
 
 void swapStrings(char string1[STRING_LENGTH], char string2[STRING_LENGTH])
-
 {
-    
-    
-    
+    char buf1[STRING_LENGTH], buf2[STRING_LENGTH];
+    strcpy(buf1, string1);
+    strcpy(buf2, string2);
+    strcpy(string1, buf2);
+    strcpy(string2, buf1);
 }
 
 
@@ -107,7 +142,17 @@ void swapStrings(char string1[STRING_LENGTH], char string2[STRING_LENGTH])
 void sortStrings(char strings[NUM_STRINGS][STRING_LENGTH])
 
 {
-    
+    int i, j;
+    for(i = 0; i < NUM_STRINGS; i++) {
+        for(j = 0; j < NUM_STRINGS; j++) {
+            if(strcmp(strings[i], strings[j]) > 0) {
+                swapStrings(strings[i], strings[j]);
+            }
+            else if(strcmp(strings[i], strings[j]) < 0) {
+                swapStrings(strings[j], strings[i]);
+            }
+        }
+    }
     
     
 }
@@ -119,13 +164,10 @@ void sortStrings(char strings[NUM_STRINGS][STRING_LENGTH])
 // See the example outputs provided in the word document. Your output should match the example outputs.
 
 void printStrings(char strings[NUM_STRINGS][STRING_LENGTH])
-
 {
-    for(int x = 0; x < NUM_STRINGS; x++) {
-        for(int y = 0; y < STRING_LENGTH; y++) {
-            printf("%s", strings[y]);
-        }
-        printf("\n");
+    int i;
+    for(i = 0; i < NUM_STRINGS; i++) {
+        printf("%s\n", strings[i]);
     }
     
 }
@@ -136,9 +178,7 @@ void printStrings(char strings[NUM_STRINGS][STRING_LENGTH])
 // Do not modify it in any way, there is no implementation needed here.
 
 void main()
-
 {
-    
     char strings[NUM_STRINGS][STRING_LENGTH]; // will store 5 strings each with a max length of 32
     
     char search_alphabet;
@@ -146,8 +186,6 @@ void main()
     char input[STRING_LENGTH];
     
     initializeStrings(strings);
-    
-    printStrings(strings);
     
     printf("Assignment 3: 2D Character Arrays\n\n");
     
@@ -174,7 +212,7 @@ void main()
     remove_vowel(strings);
     printf("\nThe strings after vowel removal:\n");
     printStrings(strings);
-    
+
     sortStrings(strings);
     
     printf("\nSorted Strings:\n");
