@@ -144,12 +144,9 @@ void sortStrings(char strings[NUM_STRINGS][STRING_LENGTH])
 {
     int i, j;
     for(i = 0; i < NUM_STRINGS; i++) {
-        for(j = 0; j < NUM_STRINGS; j++) {
+        for(j = i + 1; j < NUM_STRINGS; j++) {
             if(strcmp(strings[i], strings[j]) > 0) {
                 swapStrings(strings[i], strings[j]);
-            }
-            else if(strcmp(strings[i], strings[j]) < 0) {
-                swapStrings(strings[j], strings[i]);
             }
         }
     }
@@ -187,6 +184,8 @@ void main()
     
     initializeStrings(strings);
     
+    
+    
     printf("Assignment 3: 2D Character Arrays\n\n");
     
     
@@ -212,11 +211,10 @@ void main()
     remove_vowel(strings);
     printf("\nThe strings after vowel removal:\n");
     printStrings(strings);
-
+    
     sortStrings(strings);
     
     printf("\nSorted Strings:\n");
     
     printStrings(strings);
-    
 }
